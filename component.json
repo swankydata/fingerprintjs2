@@ -1,0 +1,11 @@
+{
+  "name": "fingerprintjs2",
+  "repo": "swankydata/fingerprintjs2",
+  "description": "Modern & flexible browser fingerprinting library",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "fingerprint2.js"
+}
