@@ -64,6 +64,14 @@
     this.options = this.extend(options, defaultOptions);
     this.nativeForEach = Array.prototype.forEach;
     this.nativeMap = Array.prototype.map;
+    /**
+     * iframe for webgl tests
+     */
+    var iframe = document.createElement('iframe');
+    iframe.setAttribute("id", "skgliframetests");
+    iframe.setAttribute("sandbox", "allow-same-origin");
+    iframe.setAttribute("style", "display: none;");
+    document.body.appendChild(iframe);
   };
   Fingerprint2.prototype = {
     extend: function(source, target) {
@@ -622,11 +630,17 @@
         //<iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
         //<script>...getIPs called in here...
         //
-        var win = iframe.contentWindow;
+        var x = document.getElementById("skgliframetests");
+        var win = (x.contentWindow || x.contentDocument);
         RTCPeerConnection = win.RTCPeerConnection
             || win.mozRTCPeerConnection
             || win.webkitRTCPeerConnection;
         useWebKit = !!win.webkitRTCPeerConnection;
+      }
+
+      if (typeof RTCPeerConnection == 'undefined') {
+        done(ips);
+        return false;
       }
 
       //minimal requirements for data connection
