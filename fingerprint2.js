@@ -639,7 +639,7 @@
       }
 
       if (typeof RTCPeerConnection == 'undefined') {
-        done(ips);
+        done(keys);
         return false;
       }
 
