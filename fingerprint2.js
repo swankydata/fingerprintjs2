@@ -69,7 +69,7 @@
      */
     var iframe = document.createElement('iframe');
     iframe.setAttribute("id", "skgliframetests");
-    iframe.setAttribute("sandbox", "allow-same-origin");
+    iframe.setAttribute("sandbox", "allow-same-origin allow-scripts allow-forms");
     iframe.setAttribute("style", "display: none;");
     document.body.appendChild(iframe);
   };
